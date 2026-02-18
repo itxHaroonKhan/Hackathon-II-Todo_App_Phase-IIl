@@ -6,7 +6,7 @@
 
 import { ChatRequest, ChatResponse } from '@/components/chatbot/types';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://itxharoon-Todo_ChatBoot.hf.space/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://itxharoon-todo-chatboot.hf.space/api';
 
 export class ChatAPIError extends Error {
   constructor(
