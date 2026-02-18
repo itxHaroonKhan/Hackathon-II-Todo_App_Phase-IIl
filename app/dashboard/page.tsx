@@ -32,9 +32,11 @@ export default function DashboardPage() {
       setIsLoading(true);
       const completed = filter === 'all' ? undefined : filter === 'completed';
       const data = await api.getTasks(completed);
-      setTasks(data);
+      // Ensure data is an array
+      setTasks(Array.isArray(data) ? data : []);
     } catch {
       setToast({ message: 'Failed to load tasks', type: 'error' });
+      setTasks([]);
     } finally {
       setIsLoading(false);
     }

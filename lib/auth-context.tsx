@@ -28,7 +28,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         try {
           // Validate the token by calling the /me endpoint
           const userResponse = await api.get('/auth/me');
-          setUser(userResponse);
+          // Check if response has user data
+          if (userResponse && userResponse.id) {
+            setUser(userResponse);
+          } else {
+            // Invalid response, clear auth
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+          }
         } catch (error) {
           // If token is invalid, clear it
           localStorage.removeItem('token');
